@@ -1,0 +1,33 @@
+logging:
+    level:
+        root: WARN
+        zswag: INFO
+
+server:
+    port: 5000
+
+spring:
+    application:
+        name: zswag-zserio-calculator-server
+
+    main:
+        web-application-type: reactive
+
+    messages:
+        encoding: UTF-8 
+        fallback-to-system-locale: true 
+
+    mvc:
+      async:
+        request-timeout: -1
+
+springdoc:
+    api-docs:
+        enabled: true
+        path: /api
+
+    swagger-ui:
+        disable-swagger-default-url: true
+        enabled: true
+        operationsSorter: alpha
+        path: /swagger-ui
