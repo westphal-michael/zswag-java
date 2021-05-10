@@ -9,9 +9,19 @@ Access & serve zserio services via REST/OpenAPI using **Java** with SpringBoot t
 
 ## Usage
 
-### Build Calculator example
+### Build zserio calculator example (including OpenAPI file generation)
 ```bash
-mvn clean package
+mvn clean verify
+```
+
+### Generated OpenAPI file during builds
+```bash
+.../zswag-java/openapi-client/generated-openapi/openapi.yaml
+```
+
+### Generated OpenAPI client sources during builds
+```bash
+.../zswag-java/openapi-client/generated-client
 ```
 
 ### Start REST server
@@ -23,6 +33,11 @@ java -jar server/target/server-0.0.1-SNAPSHOT.jar
 ### Start the client console example
 ```bash
 java -jar client/target/client-0.0.1-SNAPSHOT.jar
+```
+
+### Start the OpenApi client console example
+```bash
+java -jar openapi-client/target/openapi-client-0.0.1-SNAPSHOT.jar
 ```
 
 ### URL for OpenAPI Swagger UI

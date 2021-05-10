@@ -31,3 +31,5 @@ springdoc:
         enabled: true
         operationsSorter: alpha
         path: /swagger-ui
+
+    writer-with-default-pretty-printer: true

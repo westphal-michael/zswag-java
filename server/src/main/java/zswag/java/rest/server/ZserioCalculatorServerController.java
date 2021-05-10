@@ -14,7 +14,6 @@ import example.calculator.BaseAndExponent;
 import example.calculator.Bool;
 import example.calculator.Bools;
 import example.calculator.Bytes;
-import example.calculator.Double;
 import example.calculator.Doubles;
 import example.calculator.EnumWrapper;
 import example.calculator.I32;
@@ -61,10 +60,10 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
     }
 
     @Override
-    public ResponseEntity<Double> byteSum(Bytes request) {
+    public ResponseEntity<example.calculator.Double> byteSum(Bytes request) {
         if (request != null) {
             try {
-                Double result = calculatorServiceImpl.byteSumImpl(request, null);
+                example.calculator.Double result = calculatorServiceImpl.byteSumImpl(request, null);
                 return ResponseEntity.ok().body(result);
             } catch (ZserioError e) {
                 e.printStackTrace();
@@ -93,10 +92,10 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
     }
 
     @Override
-    public ResponseEntity<Double> floatMul(Doubles request) {
+    public ResponseEntity<example.calculator.Double> floatMul(Doubles request) {
         if (request != null) {
             try {
-                Double result = calculatorServiceImpl.floatMulImpl(request, null);
+                example.calculator.Double result = calculatorServiceImpl.floatMulImpl(request, null);
                 return ResponseEntity.ok().body(result);
             } catch (ZserioError e) {
                 e.printStackTrace();
@@ -109,10 +108,10 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
     }
 
     @Override
-    public ResponseEntity<Double> identify(Double request) {
+    public ResponseEntity<example.calculator.Double> identify(example.calculator.Double request) {
         if (request != null) {
             try {
-                Double result = calculatorServiceImpl.identityImpl(request, null);
+                example.calculator.Double result = calculatorServiceImpl.identityImpl(request, null);
                 return ResponseEntity.ok().body(result);
             } catch (ZserioError e) {
                 e.printStackTrace();
@@ -125,10 +124,10 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
     }
 
     @Override
-    public ResponseEntity<Double> intMul(Integers request) {
+    public ResponseEntity<example.calculator.Double> intMul(Integers request) {
         if (request != null) {
             try {
-                Double result = calculatorServiceImpl.intMulImpl(request, null);
+                example.calculator.Double result = calculatorServiceImpl.intMulImpl(request, null);
                 return ResponseEntity.ok().body(result);
             } catch (ZserioError e) {
                 e.printStackTrace();
@@ -141,10 +140,10 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
     }
 
     @Override
-    public ResponseEntity<Double> intSum(Integers request) {
+    public ResponseEntity<example.calculator.Double> intSum(Integers request) {
         if (request != null) {
             try {
-                Double result = calculatorServiceImpl.intSumImpl(request, null);
+                example.calculator.Double result = calculatorServiceImpl.intSumImpl(request, null);
                 return ResponseEntity.ok().body(result);
             } catch (ZserioError e) {
                 e.printStackTrace();
@@ -173,11 +172,11 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
     }
 
     @Override
-    public ResponseEntity<Double> power(BaseAndExponent baseAndExponent) {
+    public ResponseEntity<example.calculator.Double> power(BaseAndExponent baseAndExponent) {
         if ((baseAndExponent != null) && (baseAndExponent.getBase() != null)
                 && (baseAndExponent.getExponent() != null)) {
             try {
-                Double result = calculatorServiceImpl.powerImpl(baseAndExponent, null);
+                example.calculator.Double result = calculatorServiceImpl.powerImpl(baseAndExponent, null);
                 return ResponseEntity.ok().body(result);
             } catch (ZserioError e) {
                 e.printStackTrace();
@@ -218,7 +217,7 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
             Byte value = (Byte) iterator.next();
             array.setElementAt(value.byteValue(), index++);
         }
-        ResponseEntity<Double> response = byteSum(new Bytes(array));
+        ResponseEntity<example.calculator.Double> response = byteSum(new Bytes(array));
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";
         return new ResponseEntity<String>(value, response.getHeaders(), response.getStatusCode());
     }
@@ -240,7 +239,7 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
     }
 
     @Override
-    public ResponseEntity<String> getFloatMul(List<java.lang.Double> request) {
+    public ResponseEntity<String> getFloatMul(List<Double> request) {
         if (request == null) {
             return null;
         }
@@ -250,7 +249,7 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
             java.lang.Double value = (java.lang.Double) iterator.next();
             array.setElementAt(value.doubleValue(), index++);
         }
-        ResponseEntity<Double> response = floatMul(new Doubles(array));
+        ResponseEntity<example.calculator.Double> response = floatMul(new Doubles(array));
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";
         return new ResponseEntity<String>(value, response.getHeaders(), response.getStatusCode());
     }
@@ -266,7 +265,7 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
             Integer value = (Integer) iterator.next();
             array.setElementAt(value.intValue(), index++);
         }
-        ResponseEntity<Double> response = intMul(new Integers(array));
+        ResponseEntity<example.calculator.Double> response = intMul(new Integers(array));
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";
         return new ResponseEntity<String>(value, response.getHeaders(), response.getStatusCode());
     }
@@ -282,7 +281,7 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
             Integer value = (Integer) iterator.next();
             array.setElementAt(value.intValue(), index++);
         }
-        ResponseEntity<Double> response = intSum(new Integers(array));
+        ResponseEntity<example.calculator.Double> response = intSum(new Integers(array));
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";
         return new ResponseEntity<String>(value, response.getHeaders(), response.getStatusCode());
     }
@@ -303,21 +302,23 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
     public ResponseEntity<String> getPower(Integer base, Integer exponent) {
         BaseAndExponent baseAndExponent = new BaseAndExponent(new I32(base.intValue()), new I32(exponent.intValue()), 0,
                 BIT_MUL, 0, null);
-        ResponseEntity<Double> response = power(baseAndExponent);
+        ResponseEntity<example.calculator.Double> response = power(baseAndExponent);
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";
         return new ResponseEntity<String>(value, response.getHeaders(), response.getStatusCode());
     }
 
     @Override
-    public ResponseEntity<String> putIdentify(java.lang.Double request) {
-        ResponseEntity<Double> response = identify(new Double(request.doubleValue()));
+    public ResponseEntity<String> putIdentify(Double request) {
+        ResponseEntity<example.calculator.Double> response = identify(
+                new example.calculator.Double(request.doubleValue()));
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";
         return new ResponseEntity<String>(value, response.getHeaders(), response.getStatusCode());
     }
 
     @Override
-    public ResponseEntity<String> putIdentifyJson(java.lang.Double request) {
-        ResponseEntity<Double> response = identify(new Double(request.doubleValue()));
+    public ResponseEntity<String> putIdentifyJson(Double request) {
+        ResponseEntity<example.calculator.Double> response = identify(
+                new example.calculator.Double(request.doubleValue()));
         String value = JSONSerializer.serializeObject(response.getBody());
         return new ResponseEntity<String>(value, response.getHeaders(), response.getStatusCode());
     }
@@ -340,7 +341,7 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
     }
 
     @Override
-    public ResponseEntity<String> urlGetFloatMul(List<java.lang.Double> request) {
+    public ResponseEntity<String> urlGetFloatMul(List<Double> request) {
         return getFloatMul(request);
     }
 
@@ -365,7 +366,7 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
     }
 
     @Override
-    public ResponseEntity<String> urlPutIdentify(java.lang.Double request) {
+    public ResponseEntity<String> urlPutIdentify(Double request) {
         return putIdentify(request);
     }
 }

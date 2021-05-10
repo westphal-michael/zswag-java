@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import example.calculator.BaseAndExponent;
+import example.calculator.Bool;
 import example.calculator.Bools;
 import example.calculator.Bytes;
 import example.calculator.Doubles;
@@ -54,7 +55,7 @@ public interface ZserioCalculatorServiceInterface {
     // POST binary methods
     @PostMapping(value = BIT_MUL, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
             MediaType.APPLICATION_OCTET_STREAM_VALUE })
-    public ResponseEntity<example.calculator.Bool> bitMul(@RequestBody Bools request);
+    public ResponseEntity<Bool> bitMul(@RequestBody Bools request);
 
     @PostMapping(value = BYTE_SUM, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
             MediaType.APPLICATION_OCTET_STREAM_VALUE })
