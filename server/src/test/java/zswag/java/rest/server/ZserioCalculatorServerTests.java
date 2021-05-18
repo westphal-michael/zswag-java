@@ -11,6 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
 import example.calculator.BaseAndExponent;
+import example.calculator.Double;
 import example.calculator.I32;
 import zserio.runtime.array.BoolArray;
 
@@ -50,8 +51,8 @@ public class ZserioCalculatorServerTests {
 
     @Test
     public void testPostIdentifyCorrectValues() {
-        example.calculator.Double request = new example.calculator.Double(123.45);
-        ResponseEntity<example.calculator.Double> response = client.identify(request);
+        Double request = new Double(123.45);
+        ResponseEntity<Double> response = client.identify(request);
         assert (response.getStatusCode().equals(HttpStatus.OK));
         assert (request.equals(response.getBody()));
     }
@@ -59,8 +60,8 @@ public class ZserioCalculatorServerTests {
     @Test
     public void testPostPowerCorrectValues() {
         BaseAndExponent request = new BaseAndExponent(new I32(5), new I32(2), 0, "", 0, new BoolArray(0));
-        example.calculator.Double value = new example.calculator.Double(25.0);
-        ResponseEntity<example.calculator.Double> response = client.power(request);
+        Double value = new Double(25.0);
+        ResponseEntity<Double> response = client.power(request);
         assert (response.getStatusCode().equals(HttpStatus.OK));
         assert (value.equals(response.getBody()));
     }
@@ -68,8 +69,8 @@ public class ZserioCalculatorServerTests {
     @Test
     public void testPostPowerIncorrectValues() {
         BaseAndExponent request = new BaseAndExponent(new I32(5), new I32(2), 0, "", 0, new BoolArray(0));
-        example.calculator.Double value = new example.calculator.Double(1.0);
-        ResponseEntity<example.calculator.Double> response = client.power(request);
+        Double value = new Double(1.0);
+        ResponseEntity<Double> response = client.power(request);
         assert (response.getStatusCode().equals(HttpStatus.OK));
         assert (!value.equals(response.getBody()));
     }

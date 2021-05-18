@@ -145,7 +145,8 @@ public class ZserioCalculatorServiceImpl extends CalculatorService {
             double value = Math.pow(request.getBase().getValue(), request.getExponent().getValue());
             returnValue = new Double(value);
         }
-        log.info("power({},{}) = {}", request.getBase().getValue(), request.getExponent().getValue(), returnValue.getValue());
+        log.info("power({},{}) = {}", request.getBase().getValue(), request.getExponent().getValue(),
+                returnValue.getValue());
         return returnValue;
     }
 }

@@ -1,0 +1,849 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:5000
+  description: Generated server url
+paths:
+  /putIdentifyJson:
+    put:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: putIdentifyJson
+      parameters:
+      - name: value
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /putIdentify:
+    put:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: putIdentify
+      parameters:
+      - name: value
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /identify/{value}:
+    put:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: urlPutIdentify
+      parameters:
+      - name: value
+        in: path
+        required: true
+        schema:
+          type: number
+          format: double
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /power:
+    post:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: power
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              $ref: '#/components/schemas/BaseAndExponent'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/Double'
+  /name:
+    post:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: name
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              $ref: '#/components/schemas/EnumWrapper'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/String'
+  /intSum:
+    post:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: intSum
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              $ref: '#/components/schemas/Integers'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/Double'
+  /intMul:
+    post:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: intMul
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              $ref: '#/components/schemas/Integers'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/Double'
+  /identify:
+    post:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: identify
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              $ref: '#/components/schemas/Double'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/Double'
+  /floatMul:
+    post:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: floatMul
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              $ref: '#/components/schemas/Doubles'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/Double'
+  /concat:
+    post:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: concat
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              $ref: '#/components/schemas/Strings'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/String'
+  /byteSum:
+    post:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: byteSum
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              $ref: '#/components/schemas/Bytes'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/Double'
+  /bitMul:
+    post:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: bitMul
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              $ref: '#/components/schemas/Bools'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/Bool'
+  /power/{base}/{exponent}:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: urlGetPower
+      parameters:
+      - name: base
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: exponent
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /name/{value}:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: urlGetName
+      parameters:
+      - name: value
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /intSum/{values}:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: urlGetIntSum
+      parameters:
+      - name: values
+        in: path
+        required: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /intMul/{values}:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: urlGetIntMul
+      parameters:
+      - name: values
+        in: path
+        required: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /getPower:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: getPower
+      parameters:
+      - name: base
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: exponent
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /getName:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: getName
+      parameters:
+      - name: value
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /getIntSum:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: getIntSum
+      parameters:
+      - name: values
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /getIntMul:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: getIntMul
+      parameters:
+      - name: values
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /getFloatMul:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: getFloatMul
+      parameters:
+      - name: values
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: number
+            format: double
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /getConcat:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: getConcat
+      parameters:
+      - name: values
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /getByteSum:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: getByteSum
+      parameters:
+      - name: values
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: byte
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /getBitMul:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: getBitMul
+      parameters:
+      - name: values
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: boolean
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /floatMul/{values}:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: urlGetFloatMul
+      parameters:
+      - name: values
+        in: path
+        required: true
+        schema:
+          type: array
+          items:
+            type: number
+            format: double
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /concat/{values}:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: urlGetConcat
+      parameters:
+      - name: values
+        in: path
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /byteSum/{values}:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: urlGetByteSum
+      parameters:
+      - name: values
+        in: path
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: byte
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /bitMul/{values}:
+    get:
+      tags:
+      - zserio-calculator-server-controller
+      operationId: urlGetBitMul
+      parameters:
+      - name: values
+        in: path
+        required: true
+        schema:
+          type: array
+          items:
+            type: boolean
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    BaseAndExponent:
+      type: object
+      properties:
+        unused2:
+          type: string
+        unused5:
+          $ref: '#/components/schemas/BoolArray'
+        base:
+          $ref: '#/components/schemas/I32'
+        unused3:
+          type: number
+          format: float
+        unused1:
+          type: integer
+          format: int32
+        exponent:
+          $ref: '#/components/schemas/I32'
+    BoolArray:
+      type: object
+      properties:
+        fromList:
+          type: array
+          writeOnly: true
+          items:
+            type: boolean
+    I32:
+      type: object
+      properties:
+        value:
+          type: integer
+          format: int32
+    Double:
+      type: object
+      properties:
+        value:
+          type: number
+          format: double
+    EnumWrapper:
+      type: object
+      properties:
+        value:
+          type: string
+          enum:
+          - TEST_ENUM_0
+          - TEST_ENUM_1
+          - TEST_ENUM_2
+    String:
+      type: object
+      properties:
+        value:
+          type: string
+    IntArray:
+      type: object
+      properties:
+        fromList:
+          type: array
+          writeOnly: true
+          items:
+            type: integer
+            format: int32
+    Integers:
+      type: object
+      properties:
+        values:
+          $ref: '#/components/schemas/IntArray'
+    Doubles:
+      type: object
+      properties:
+        values:
+          $ref: '#/components/schemas/Float64Array'
+    Float64Array:
+      type: object
+      properties:
+        fromList:
+          type: array
+          writeOnly: true
+          items:
+            type: number
+            format: double
+    StringArray:
+      type: object
+      properties:
+        fromList:
+          type: array
+          writeOnly: true
+          items:
+            type: string
+    Strings:
+      type: object
+      properties:
+        values:
+          $ref: '#/components/schemas/StringArray'
+    Bytes:
+      type: object
+      properties:
+        values:
+          $ref: '#/components/schemas/UnsignedByteArray'
+    UnsignedByteArray:
+      type: object
+      properties:
+        fromList:
+          type: array
+          writeOnly: true
+          items:
+            type: integer
+            format: int32
+    Bools:
+      type: object
+      properties:
+        values:
+          $ref: '#/components/schemas/BoolArray'
+    Bool:
+      type: object
+      properties:
+        value:
+          type: boolean

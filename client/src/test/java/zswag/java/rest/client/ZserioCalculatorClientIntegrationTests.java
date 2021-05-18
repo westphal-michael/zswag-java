@@ -18,6 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 
+import example.calculator.Double;
 import example.calculator.I32;
 
 @ActiveProfiles("test")
@@ -27,7 +28,7 @@ import example.calculator.I32;
 public class ZserioCalculatorClientIntegrationTests {
 
     private final static I32 EXPONENT_POWER_REQUEST_I32 = new I32(5);
-    private final static example.calculator.Double POWER_RESPONSE_DOUBLE = new example.calculator.Double(
+    private final static Double POWER_RESPONSE_DOUBLE = new Double(
             BigInteger.valueOf(2).pow(EXPONENT_POWER_REQUEST_I32.getValue()).doubleValue());
 
     @Autowired
@@ -53,14 +54,14 @@ public class ZserioCalculatorClientIntegrationTests {
 
     @Test
     public void testPowerOfTwoCorrectValues() {
-        example.calculator.Double returnValue = controller.powerOfTwo(EXPONENT_POWER_REQUEST_I32);
+        Double returnValue = controller.powerOfTwo(EXPONENT_POWER_REQUEST_I32);
         assertEquals(POWER_RESPONSE_DOUBLE.getValue(), returnValue.getValue());
     }
 
     @Test
     public void testPowerOfTwoIncorrectValues() {
-        example.calculator.Double compareValue = new example.calculator.Double(POWER_RESPONSE_DOUBLE.getValue() + 1.0);
-        example.calculator.Double returnValue = controller.powerOfTwo(EXPONENT_POWER_REQUEST_I32);
+        Double compareValue = new Double(POWER_RESPONSE_DOUBLE.getValue() + 1.0);
+        Double returnValue = controller.powerOfTwo(EXPONENT_POWER_REQUEST_I32);
         assertNotEquals(compareValue.getValue(), returnValue.getValue());
     }
 }

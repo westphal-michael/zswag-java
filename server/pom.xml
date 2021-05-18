@@ -91,6 +91,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <jvmArguments>-Dspring.application.admin.enabled=true</jvmArguments>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -102,6 +103,85 @@
                         </exclude>
                     </excludes>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>pre-integration-test</id>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>post-integration-test</id>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <goals>
+                    <goal>clean</goal>
+                </goals>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}/../openapi-client/generated-openapi</directory>
+                            <directory>${project.basedir}/../openapi-client/generated-client</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-maven-plugin</artifactId>
+                <version>${springdoc-maven-plugin.version}</version>
+                <configuration>
+                    <apiDocsUrl>http://localhost:5000/api.yaml</apiDocsUrl>
+                    <outputDir>${project.basedir}/../openapi-client/generated-openapi</outputDir>
+                    <outputFileName>openapi.yaml</outputFileName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.swagger.codegen.v3</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>${swagger-codegen-maven-plugin}</version>
+                <executions>
+                    <execution>
+                        <id>rest-server</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <apiPackage>zswag.java.rest.openapi.api</apiPackage>
+                            <artifactId>openapi-client</artifactId>
+                            <groupId>zswag.java</groupId>
+                            <inputSpec>${project.basedir}/../openapi-client/generated-openapi/openapi.yaml</inputSpec>
+                            <invokerPackage>zswag.java.rest.openapi.invoke</invokerPackage>
+                            <modelPackage>zswag.java.rest.openapi.model</modelPackage>
+                            <language>spring</language>
+                            <library>spring-cloud</library>
+                            <modelNameSuffix>OpenApi</modelNameSuffix>
+                            <output>${project.basedir}/../openapi-client/generated-client</output>
+                            <configOptions>
+                                <basePackage>zswag.java.rest.openapi</basePackage>
+                                <configPackage>zswag.java.rest.openapi.config</configPackage>
+                                <packageName>zswag.java.rest.openapi</packageName>
+                                <reactive>true</reactive>
+                                <returnSuccessCode>true</returnSuccessCode>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
