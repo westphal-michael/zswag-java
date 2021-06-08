@@ -19,8 +19,11 @@ import zserio.runtime.io.ZserioIO;
 @Slf4j
 public class SpringZserioHttpMessageConverter extends AbstractHttpMessageConverter<InitializeOffsetsWriter> {
 
+    public static final MediaType MEDIATYPE_ZSERIO = new MediaType("application", "x-zserio-object");
+    public static final String MEDIATYPE_ZSERIO_VALUE = "application/x-zserio-object";
+
     public SpringZserioHttpMessageConverter() {
-        super(MediaType.APPLICATION_OCTET_STREAM, MediaType.ALL);
+        super(MEDIATYPE_ZSERIO);
     }
 
     @Override

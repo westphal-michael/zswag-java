@@ -19,6 +19,7 @@ import example.calculator.Doubles;
 import example.calculator.EnumWrapper;
 import example.calculator.Integers;
 import example.calculator.Strings;
+import zswag.java.rest.spring.SpringZserioHttpMessageConverter;
 
 public interface ZserioCalculatorServiceInterface {
 
@@ -53,40 +54,40 @@ public interface ZserioCalculatorServiceInterface {
 
     // -------------------
     // POST binary methods
-    @PostMapping(value = BIT_MUL, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
-            MediaType.APPLICATION_OCTET_STREAM_VALUE })
+    @PostMapping(value = BIT_MUL, consumes = { SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE }, produces = {
+            SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE })
     public ResponseEntity<Bool> bitMul(@RequestBody Bools request);
 
-    @PostMapping(value = BYTE_SUM, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
-            MediaType.APPLICATION_OCTET_STREAM_VALUE })
+    @PostMapping(value = BYTE_SUM, consumes = { SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE }, produces = {
+            SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE })
     public ResponseEntity<example.calculator.Double> byteSum(@RequestBody Bytes request);
 
-    @PostMapping(value = CONCAT, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
-            MediaType.APPLICATION_OCTET_STREAM_VALUE })
+    @PostMapping(value = CONCAT, consumes = { SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE }, produces = {
+            SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE })
     public ResponseEntity<example.calculator.String> concat(@RequestBody Strings request);
 
-    @PostMapping(value = FLOAT_MUL, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
-            MediaType.APPLICATION_OCTET_STREAM_VALUE })
+    @PostMapping(value = FLOAT_MUL, consumes = { SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE }, produces = {
+            SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE })
     public ResponseEntity<example.calculator.Double> floatMul(@RequestBody Doubles request);
 
-    @PostMapping(value = IDENTIFY, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
-            MediaType.APPLICATION_OCTET_STREAM_VALUE })
+    @PostMapping(value = IDENTIFY, consumes = { SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE }, produces = {
+            SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE })
     public ResponseEntity<example.calculator.Double> identify(@RequestBody example.calculator.Double request);
 
-    @PostMapping(value = INT_MUL, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
-            MediaType.APPLICATION_OCTET_STREAM_VALUE })
+    @PostMapping(value = INT_MUL, consumes = { SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE }, produces = {
+            SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE })
     public ResponseEntity<example.calculator.Double> intMul(@RequestBody Integers request);
 
-    @PostMapping(value = INT_SUM, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
-            MediaType.APPLICATION_OCTET_STREAM_VALUE })
+    @PostMapping(value = INT_SUM, consumes = { SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE }, produces = {
+            SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE })
     public ResponseEntity<example.calculator.Double> intSum(@RequestBody Integers request);
 
-    @PostMapping(value = NAME, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
-            MediaType.APPLICATION_OCTET_STREAM_VALUE })
+    @PostMapping(value = NAME, consumes = { SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE }, produces = {
+            SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE })
     public ResponseEntity<example.calculator.String> name(@RequestBody EnumWrapper request);
 
-    @PostMapping(value = POWER, consumes = { MediaType.APPLICATION_OCTET_STREAM_VALUE }, produces = {
-            MediaType.APPLICATION_OCTET_STREAM_VALUE })
+    @PostMapping(value = POWER, consumes = { SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE }, produces = {
+            SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE })
     public ResponseEntity<example.calculator.Double> power(@RequestBody BaseAndExponent baseAndExponent);
 
     // -----------------------------

@@ -15,15 +15,12 @@ import javax.validation.constraints.*;
  * BaseAndExponentOpenApi
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-05-10T15:52:10.810561900+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-06-08T12:34:06.016125600+02:00[Europe/Berlin]")
 
 
 public class BaseAndExponentOpenApi   {
-  @JsonProperty("unused2")
-  private String unused2 = null;
-
-  @JsonProperty("unused5")
-  private BoolArrayOpenApi unused5 = null;
+  @JsonProperty("exponent")
+  private I32OpenApi exponent = null;
 
   @JsonProperty("base")
   private I32OpenApi base = null;
@@ -31,49 +28,33 @@ public class BaseAndExponentOpenApi   {
   @JsonProperty("unused3")
   private Float unused3 = null;
 
+  @JsonProperty("unused5")
+  private BoolArrayOpenApi unused5 = null;
+
   @JsonProperty("unused1")
   private Integer unused1 = null;
 
-  @JsonProperty("exponent")
-  private I32OpenApi exponent = null;
+  @JsonProperty("unused2")
+  private String unused2 = null;
 
-  public BaseAndExponentOpenApi unused2(String unused2) {
-    this.unused2 = unused2;
+  public BaseAndExponentOpenApi exponent(I32OpenApi exponent) {
+    this.exponent = exponent;
     return this;
   }
 
   /**
-   * Get unused2
-   * @return unused2
-   **/
-  @ApiModelProperty(value = "")
-  
-    public String getUnused2() {
-    return unused2;
-  }
-
-  public void setUnused2(String unused2) {
-    this.unused2 = unused2;
-  }
-
-  public BaseAndExponentOpenApi unused5(BoolArrayOpenApi unused5) {
-    this.unused5 = unused5;
-    return this;
-  }
-
-  /**
-   * Get unused5
-   * @return unused5
+   * Get exponent
+   * @return exponent
    **/
   @ApiModelProperty(value = "")
   
     @Valid
-    public BoolArrayOpenApi getUnused5() {
-    return unused5;
+    public I32OpenApi getExponent() {
+    return exponent;
   }
 
-  public void setUnused5(BoolArrayOpenApi unused5) {
-    this.unused5 = unused5;
+  public void setExponent(I32OpenApi exponent) {
+    this.exponent = exponent;
   }
 
   public BaseAndExponentOpenApi base(I32OpenApi base) {
@@ -115,6 +96,26 @@ public class BaseAndExponentOpenApi   {
     this.unused3 = unused3;
   }
 
+  public BaseAndExponentOpenApi unused5(BoolArrayOpenApi unused5) {
+    this.unused5 = unused5;
+    return this;
+  }
+
+  /**
+   * Get unused5
+   * @return unused5
+   **/
+  @ApiModelProperty(value = "")
+  
+    @Valid
+    public BoolArrayOpenApi getUnused5() {
+    return unused5;
+  }
+
+  public void setUnused5(BoolArrayOpenApi unused5) {
+    this.unused5 = unused5;
+  }
+
   public BaseAndExponentOpenApi unused1(Integer unused1) {
     this.unused1 = unused1;
     return this;
@@ -134,24 +135,23 @@ public class BaseAndExponentOpenApi   {
     this.unused1 = unused1;
   }
 
-  public BaseAndExponentOpenApi exponent(I32OpenApi exponent) {
-    this.exponent = exponent;
+  public BaseAndExponentOpenApi unused2(String unused2) {
+    this.unused2 = unused2;
     return this;
   }
 
   /**
-   * Get exponent
-   * @return exponent
+   * Get unused2
+   * @return unused2
    **/
   @ApiModelProperty(value = "")
   
-    @Valid
-    public I32OpenApi getExponent() {
-    return exponent;
+    public String getUnused2() {
+    return unused2;
   }
 
-  public void setExponent(I32OpenApi exponent) {
-    this.exponent = exponent;
+  public void setUnused2(String unused2) {
+    this.unused2 = unused2;
   }
 
 
@@ -164,17 +164,17 @@ public class BaseAndExponentOpenApi   {
       return false;
     }
     BaseAndExponentOpenApi baseAndExponent = (BaseAndExponentOpenApi) o;
-    return Objects.equals(this.unused2, baseAndExponent.unused2) &&
-        Objects.equals(this.unused5, baseAndExponent.unused5) &&
+    return Objects.equals(this.exponent, baseAndExponent.exponent) &&
         Objects.equals(this.base, baseAndExponent.base) &&
         Objects.equals(this.unused3, baseAndExponent.unused3) &&
+        Objects.equals(this.unused5, baseAndExponent.unused5) &&
         Objects.equals(this.unused1, baseAndExponent.unused1) &&
-        Objects.equals(this.exponent, baseAndExponent.exponent);
+        Objects.equals(this.unused2, baseAndExponent.unused2);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(unused2, unused5, base, unused3, unused1, exponent);
+    return Objects.hash(exponent, base, unused3, unused5, unused1, unused2);
   }
 
   @Override
@@ -182,12 +182,12 @@ public class BaseAndExponentOpenApi   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseAndExponentOpenApi {\n");
     
-    sb.append("    unused2: ").append(toIndentedString(unused2)).append("\n");
-    sb.append("    unused5: ").append(toIndentedString(unused5)).append("\n");
+    sb.append("    exponent: ").append(toIndentedString(exponent)).append("\n");
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
     sb.append("    unused3: ").append(toIndentedString(unused3)).append("\n");
+    sb.append("    unused5: ").append(toIndentedString(unused5)).append("\n");
     sb.append("    unused1: ").append(toIndentedString(unused1)).append("\n");
-    sb.append("    exponent: ").append(toIndentedString(exponent)).append("\n");
+    sb.append("    unused2: ").append(toIndentedString(unused2)).append("\n");
     sb.append("}");
     return sb.toString();
   }

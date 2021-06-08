@@ -8,7 +8,6 @@ import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.util.MimeType;
-import org.springframework.util.MimeTypeUtils;
 
 import lombok.extern.slf4j.Slf4j;
 import zserio.runtime.io.InitializeOffsetsWriter;
@@ -18,7 +17,7 @@ import zserio.runtime.io.ZserioIO;
 public class SpringZserioByteArrayDecoder extends AbstractDataBufferDecoder<InitializeOffsetsWriter> {
 
     public SpringZserioByteArrayDecoder() {
-        super(MimeTypeUtils.APPLICATION_OCTET_STREAM, MimeTypeUtils.ALL);
+        super(SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO);
     }
 
     @Override

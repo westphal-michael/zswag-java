@@ -10,7 +10,6 @@ import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferFactory;
 import org.springframework.lang.Nullable;
 import org.springframework.util.MimeType;
-import org.springframework.util.MimeTypeUtils;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
@@ -21,7 +20,7 @@ import zserio.runtime.io.ZserioIO;
 public class SpringZserioByteArrayEncoder extends AbstractEncoder<InitializeOffsetsWriter> {
 
     public SpringZserioByteArrayEncoder() {
-        super(MimeTypeUtils.APPLICATION_OCTET_STREAM, MimeTypeUtils.ALL);
+        super(SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO);
     }
 
     @Override

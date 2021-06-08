@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
-import org.springframework.http.MediaType;
 import org.springframework.http.converter.AbstractHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
@@ -21,12 +20,13 @@ import zswag.java.rest.openapi.model.BaseAndExponentOpenApi;
 import zswag.java.rest.openapi.model.DoubleOpenApi;
 import zswag.java.rest.openapi.model.I32OpenApi;
 import zswag.java.rest.openapi.model.StringOpenApi;
+import zswag.java.rest.spring.SpringZserioHttpMessageConverter;
 
 @Slf4j
 public class SpringOpenApiHttpMessageConverter extends AbstractHttpMessageConverter<Object> {
 
     public SpringOpenApiHttpMessageConverter() {
-        super(MediaType.APPLICATION_OCTET_STREAM);
+        super(SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO);
     }
 
     @Override

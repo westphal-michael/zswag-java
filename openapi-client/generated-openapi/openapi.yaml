@@ -88,7 +88,7 @@ paths:
       operationId: power
       requestBody:
         content:
-          application/octet-stream:
+          application/x-zserio-object:
             schema:
               $ref: '#/components/schemas/BaseAndExponent'
         required: true
@@ -102,7 +102,7 @@ paths:
         "200":
           description: OK
           content:
-            application/octet-stream:
+            application/x-zserio-object:
               schema:
                 $ref: '#/components/schemas/Double'
   /name:
@@ -112,7 +112,7 @@ paths:
       operationId: name
       requestBody:
         content:
-          application/octet-stream:
+          application/x-zserio-object:
             schema:
               $ref: '#/components/schemas/EnumWrapper'
         required: true
@@ -126,7 +126,7 @@ paths:
         "200":
           description: OK
           content:
-            application/octet-stream:
+            application/x-zserio-object:
               schema:
                 $ref: '#/components/schemas/String'
   /intSum:
@@ -136,7 +136,7 @@ paths:
       operationId: intSum
       requestBody:
         content:
-          application/octet-stream:
+          application/x-zserio-object:
             schema:
               $ref: '#/components/schemas/Integers'
         required: true
@@ -150,7 +150,7 @@ paths:
         "200":
           description: OK
           content:
-            application/octet-stream:
+            application/x-zserio-object:
               schema:
                 $ref: '#/components/schemas/Double'
   /intMul:
@@ -160,7 +160,7 @@ paths:
       operationId: intMul
       requestBody:
         content:
-          application/octet-stream:
+          application/x-zserio-object:
             schema:
               $ref: '#/components/schemas/Integers'
         required: true
@@ -174,7 +174,7 @@ paths:
         "200":
           description: OK
           content:
-            application/octet-stream:
+            application/x-zserio-object:
               schema:
                 $ref: '#/components/schemas/Double'
   /identify:
@@ -184,7 +184,7 @@ paths:
       operationId: identify
       requestBody:
         content:
-          application/octet-stream:
+          application/x-zserio-object:
             schema:
               $ref: '#/components/schemas/Double'
         required: true
@@ -198,7 +198,7 @@ paths:
         "200":
           description: OK
           content:
-            application/octet-stream:
+            application/x-zserio-object:
               schema:
                 $ref: '#/components/schemas/Double'
   /floatMul:
@@ -208,7 +208,7 @@ paths:
       operationId: floatMul
       requestBody:
         content:
-          application/octet-stream:
+          application/x-zserio-object:
             schema:
               $ref: '#/components/schemas/Doubles'
         required: true
@@ -222,7 +222,7 @@ paths:
         "200":
           description: OK
           content:
-            application/octet-stream:
+            application/x-zserio-object:
               schema:
                 $ref: '#/components/schemas/Double'
   /concat:
@@ -232,7 +232,7 @@ paths:
       operationId: concat
       requestBody:
         content:
-          application/octet-stream:
+          application/x-zserio-object:
             schema:
               $ref: '#/components/schemas/Strings'
         required: true
@@ -246,7 +246,7 @@ paths:
         "200":
           description: OK
           content:
-            application/octet-stream:
+            application/x-zserio-object:
               schema:
                 $ref: '#/components/schemas/String'
   /byteSum:
@@ -256,7 +256,7 @@ paths:
       operationId: byteSum
       requestBody:
         content:
-          application/octet-stream:
+          application/x-zserio-object:
             schema:
               $ref: '#/components/schemas/Bytes'
         required: true
@@ -270,7 +270,7 @@ paths:
         "200":
           description: OK
           content:
-            application/octet-stream:
+            application/x-zserio-object:
               schema:
                 $ref: '#/components/schemas/Double'
   /bitMul:
@@ -280,7 +280,7 @@ paths:
       operationId: bitMul
       requestBody:
         content:
-          application/octet-stream:
+          application/x-zserio-object:
             schema:
               $ref: '#/components/schemas/Bools'
         required: true
@@ -294,7 +294,7 @@ paths:
         "200":
           description: OK
           content:
-            application/octet-stream:
+            application/x-zserio-object:
               schema:
                 $ref: '#/components/schemas/Bool'
   /power/{base}/{exponent}:
@@ -734,20 +734,20 @@ components:
     BaseAndExponent:
       type: object
       properties:
-        unused2:
-          type: string
-        unused5:
-          $ref: '#/components/schemas/BoolArray'
+        exponent:
+          $ref: '#/components/schemas/I32'
         base:
           $ref: '#/components/schemas/I32'
         unused3:
           type: number
           format: float
+        unused5:
+          $ref: '#/components/schemas/BoolArray'
         unused1:
           type: integer
           format: int32
-        exponent:
-          $ref: '#/components/schemas/I32'
+        unused2:
+          type: string
     BoolArray:
       type: object
       properties:

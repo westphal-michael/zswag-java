@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
  * Float64ArrayOpenApi
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-05-10T15:52:10.810561900+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-06-08T12:34:06.016125600+02:00[Europe/Berlin]")
 
 
 public class Float64ArrayOpenApi   {

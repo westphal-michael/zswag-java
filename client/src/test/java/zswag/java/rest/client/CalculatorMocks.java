@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.math.BigInteger;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
@@ -13,6 +12,7 @@ import example.calculator.Double;
 import example.calculator.I32;
 import zserio.runtime.io.ByteArrayBitStreamWriter;
 import zswag.java.rest.api.ZserioCalculatorServiceInterface;
+import zswag.java.rest.spring.SpringZserioHttpMessageConverter;
 
 public class CalculatorMocks {
 
@@ -24,6 +24,6 @@ public class CalculatorMocks {
 
         mockService.stubFor(WireMock.post(WireMock.urlEqualTo(ZserioCalculatorServiceInterface.POWER))
                 .willReturn(WireMock.aResponse().withStatus(HttpStatus.OK.value())
-                        .withHeader("Content-Type", MediaType.APPLICATION_OCTET_STREAM_VALUE).withBody(byteArray)));
+                        .withHeader("Content-Type", SpringZserioHttpMessageConverter.MEDIATYPE_ZSERIO_VALUE).withBody(byteArray)));
     }
 }
