@@ -1,0 +1,14 @@
+feign:
+    client:
+        config:
+            default:
+                connectTimeout: 10000
+                decoder: zswag.java.rest.feign.FeignZserioDecoder
+                encoder: zswag.java.rest.feign.FeignZserioEncoder
+                loggerLevel: basic
+                readTimeout: 10000
+    url: http://localhost:${local.server.port}
+
+server:
+    port: 0
+    

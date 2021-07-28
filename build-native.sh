@@ -1,0 +1,8 @@
+#!/bin/bash
+TEMP_JAVA_HOME=$JAVA_HOME
+TEMP_PATH=$PATH
+export PATH=$GRAALVM_HOME/bin:$PATH
+export JAVA_HOME=$GRAALVM_HOME
+mvn -Pnative clean verify $1
+export PATH=$TEMP_PATH
+export JAVA_HOME=$TEMP_JAVA_HOME

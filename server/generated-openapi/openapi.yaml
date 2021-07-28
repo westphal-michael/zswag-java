@@ -738,16 +738,16 @@ components:
           $ref: '#/components/schemas/I32'
         base:
           $ref: '#/components/schemas/I32'
-        unused3:
-          type: number
-          format: float
-        unused5:
-          $ref: '#/components/schemas/BoolArray'
         unused1:
           type: integer
           format: int32
         unused2:
           type: string
+        unused3:
+          type: number
+          format: float
+        unused5:
+          $ref: '#/components/schemas/BoolArray'
     BoolArray:
       type: object
       properties:
