@@ -14,6 +14,9 @@ logging:
         root: WARN
         zswag: INFO
 
+openAPIDefinition:
+    url: ${feign.url}
+    
 spring:
     application:
         name: zswag-zserio-calculator-openapi-client

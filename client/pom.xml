@@ -1,110 +1,307 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>zswag.java</groupId>
-        <artifactId>parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
-    <artifactId>client</artifactId>
-    <name>zswag-java-client</name>
-    <description>zswag Java client</description>
-    <packaging>jar</packaging>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>zswag.java</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>client</artifactId>
+	<name>zswag-java-client</name>
+	<description>zswag Java client</description>
+	<packaging>jar</packaging>
 
-    <properties>
-        <start-class>zswag.java.rest.client.ZserioCalculatorClientConsoleApplication</start-class>
-    </properties>
+	<properties>
+		<start-class>zswag.java.rest.client.ZserioCalculatorClientApplication</start-class>
+	</properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-indexer</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>zserio</groupId>
+			<artifactId>zserio_runtime</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>zserio</groupId>
-            <artifactId>zserio_runtime</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>zswag.java</groupId>
-            <artifactId>service</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>zswag.java</groupId>
+			<artifactId>service</artifactId>
+		</dependency>
 
 
-        <!-- ************************* -->
-        <!-- * optional dependencies * -->
-        <!-- ************************* -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>provided</scope>
-            <optional>true</optional>
-        </dependency>
+		<!-- ************************* -->
+		<!-- * optional dependencies * -->
+		<!-- ************************* -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 
 
-        <!-- ***************************** -->
-        <!-- * test related dependencies * -->
-        <!-- ***************************** -->
-        <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock</artifactId>
-            <scope>test</scope>
-        </dependency>
+		<!-- ***************************** -->
+		<!-- * test related dependencies * -->
+		<!-- ***************************** -->
+		<dependency>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock</artifactId>
+			<scope>test</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
-    </dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<banDuplicatePomDependencyVersions />
+								<dependencyConvergence />
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                        <exclude>
-                            <groupId>org.springframework.boot</groupId>
-                            <artifactId>spring-boot-devtools</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+	<profiles>
+		<profile>
+			<id>java</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<directory>targetJava</directory>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<configuration>
+							<excludes>
+								<exclude>
+									<groupId>org.projectlombok</groupId>
+									<artifactId>lombok</artifactId>
+								</exclude>
+							</excludes>
+						</configuration>
+						<executions>
+							<execution>
+								<id>repackage</id>
+								<configuration>
+									<classifier>boot</classifier>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-devtools</artifactId>
+					<scope>runtime</scope>
+					<optional>true</optional>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<id>docker-java</id>
+			<build>
+				<directory>targetDockerJava</directory>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<configuration>
+							<excludes>
+								<exclude>
+									<groupId>org.projectlombok</groupId>
+									<artifactId>lombok</artifactId>
+								</exclude>
+							</excludes>
+							<image>
+								<name>${project.parent.groupId}/${project.artifactId}:${zswag.version}</name>
+							</image>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>docker-native</id>
+			<build>
+				<directory>targetDockerNative</directory>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.experimental</groupId>
+						<artifactId>spring-aot-maven-plugin</artifactId>
+						<configuration>
+							<mode>native-agent</mode>
+						</configuration>
+						<executions>
+							<execution>
+								<id>test-generate</id>
+								<goals>
+									<goal>test-generate</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>generate</id>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<configuration>
+							<excludes>
+								<exclude>
+									<groupId>org.projectlombok</groupId>
+									<artifactId>lombok</artifactId>
+								</exclude>
+							</excludes>
+							<image>
+								<builder>paketobuildpacks/builder:tiny</builder>
+								<env>
+									<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
+									<BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+										-H:+ReportExceptionStackTraces
+										--verbose
+									</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+								</env>
+								<name>${project.parent.groupId}/${project.artifactId}-native:${zswag.version}</name>
+							</image>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.graalvm.buildtools</groupId>
+					<artifactId>junit-platform-native</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.springframework.experimental</groupId>
+					<artifactId>spring-native</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.springframework.experimental</groupId>
+					<artifactId>spring-native-configuration</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<id>native</id>
+			<build>
+				<directory>targetNative</directory>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.experimental</groupId>
+						<artifactId>spring-aot-maven-plugin</artifactId>
+						<configuration>
+							<mode>native-agent</mode>
+						</configuration>
+						<executions>
+							<execution>
+								<id>test-generate</id>
+								<goals>
+									<goal>test-generate</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>generate</id>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.graalvm.buildtools</groupId>
+						<artifactId>native-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>test-native</id>
+								<goals>
+									<goal>test</goal>
+								</goals>
+								<phase>test</phase>
+							</execution>
+							<execution>
+								<id>build-native</id>
+								<goals>
+									<goal>build</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+						<configuration>
+							<buildArgs>
+								--verbose
+							</buildArgs>
+							<imageName>${project.artifactId}</imageName>
+						</configuration>
+					</plugin>
+					<!-- Avoid a clash between Spring Boot repackaging and native-maven-plugin -->
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<configuration>
+							<classifier>exec</classifier>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.graalvm.buildtools</groupId>
+					<artifactId>junit-platform-native</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.springframework.experimental</groupId>
+					<artifactId>spring-native</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.springframework.experimental</groupId>
+					<artifactId>spring-native-configuration</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 </project>
