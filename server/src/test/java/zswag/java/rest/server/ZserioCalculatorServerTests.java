@@ -18,7 +18,7 @@ import zserio.runtime.array.BoolArray;
 @ActiveProfiles("test")
 @ContextConfiguration(classes = ZserioCalculatorServerApplication.class)
 @EnableFeignClients
-@SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ZserioCalculatorServerTests {
     @Autowired
     private ZserioCalculatorServiceTestClient client;
