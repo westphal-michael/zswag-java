@@ -19,16 +19,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-indexer</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-logging</artifactId>
 		</dependency>
@@ -38,8 +28,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.yaml</groupId>
-			<artifactId>snakeyaml</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 
 		<dependency>
@@ -175,6 +165,9 @@
 					<plugin>
 						<groupId>org.springframework.experimental</groupId>
 						<artifactId>spring-aot-maven-plugin</artifactId>
+						<configuration>
+							<mode>native-agent</mode>
+						</configuration>
 						<executions>
 							<execution>
 								<id>test-generate</id>
@@ -205,9 +198,7 @@
 								<env>
 									<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
 									<BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
-										-Dspring.native.verify=true
 										-H:+ReportExceptionStackTraces
-										--no-fallback
 										--verbose
 									</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
 								</env>
@@ -218,6 +209,11 @@
 				</plugins>
 			</build>
 			<dependencies>
+				<dependency>
+					<groupId>org.graalvm.buildtools</groupId>
+					<artifactId>junit-platform-native</artifactId>
+					<scope>test</scope>
+				</dependency>
 				<dependency>
 					<groupId>org.springframework.experimental</groupId>
 					<artifactId>spring-native</artifactId>
@@ -237,6 +233,9 @@
 					<plugin>
 						<groupId>org.springframework.experimental</groupId>
 						<artifactId>spring-aot-maven-plugin</artifactId>
+						<configuration>
+							<mode>native-agent</mode>
+						</configuration>
 						<executions>
 							<execution>
 								<id>test-generate</id>
@@ -273,9 +272,6 @@
 						</executions>
 						<configuration>
 							<buildArgs>
-								-Dspring.native.verify=true
-								-H:+ReportExceptionStackTraces
-								--no-fallback
 								--verbose
 							</buildArgs>
 							<imageName>${project.artifactId}</imageName>

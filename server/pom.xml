@@ -24,22 +24,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-indexer</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-logging</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.yaml</groupId>
-			<artifactId>snakeyaml</artifactId>
 		</dependency>
 
 		<dependency>
@@ -260,6 +250,9 @@
 					<plugin>
 						<groupId>org.springframework.experimental</groupId>
 						<artifactId>spring-aot-maven-plugin</artifactId>
+						<configuration>
+							<mode>native-agent</mode>
+						</configuration>
 						<executions>
 							<execution>
 								<id>test-generate</id>
@@ -289,9 +282,10 @@
 								<env>
 									<BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
 									<BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>
-										-Dspring.native.verify=true
 										-H:+ReportExceptionStackTraces
-										--no-fallback
+										--enable-all-security-services
+										--enable-http
+										--enable-https
 										--verbose
 									</BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>
 								</env>
@@ -302,6 +296,11 @@
 				</plugins>
 			</build>
 			<dependencies>
+				<dependency>
+					<groupId>org.graalvm.buildtools</groupId>
+					<artifactId>junit-platform-native</artifactId>
+					<scope>test</scope>
+				</dependency>
 				<dependency>
 					<groupId>org.springframework.experimental</groupId>
 					<artifactId>spring-native</artifactId>
@@ -321,6 +320,9 @@
 					<plugin>
 						<groupId>org.springframework.experimental</groupId>
 						<artifactId>spring-aot-maven-plugin</artifactId>
+						<configuration>
+							<mode>native-agent</mode>
+						</configuration>
 						<executions>
 							<execution>
 								<id>test-generate</id>
@@ -357,15 +359,13 @@
 						</executions>
 						<configuration>
 							<buildArgs>
-								-Dspring.native.verify=true
-								-H:+ReportExceptionStackTraces
-								--no-fallback
+								--enable-all-security-services
+								--enable-http
+								--enable-https
 								--verbose
 							</buildArgs>
 							<imageName>${project.artifactId}</imageName>
 						</configuration>
-						<dependencies>
-						</dependencies>
 					</plugin>
 					<!-- Avoid a clash between Spring Boot repackaging and native-maven-plugin -->
 					<plugin>
@@ -382,14 +382,6 @@
 					<groupId>org.graalvm.buildtools</groupId>
 					<artifactId>junit-platform-native</artifactId>
 					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-validation</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-web</artifactId>
 				</dependency>
 				<dependency>
 					<groupId>org.springframework.experimental</groupId>
