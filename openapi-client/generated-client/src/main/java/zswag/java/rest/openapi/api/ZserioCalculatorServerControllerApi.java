@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-01-20T13:28:39.317860+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-01-20T14:32:47.992207+01:00[Europe/Berlin]")
 @Validated
 @Api(value = "ZserioCalculatorServerController", description = "the ZserioCalculatorServerController API")
 public interface ZserioCalculatorServerControllerApi {

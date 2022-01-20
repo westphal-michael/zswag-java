@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
  * BaseAndExponentOpenApi
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-01-20T13:28:39.317860+01:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-01-20T14:32:47.992207+01:00[Europe/Berlin]")
 
 
 public class BaseAndExponentOpenApi   {
@@ -26,10 +26,6 @@ public class BaseAndExponentOpenApi   {
   @JsonProperty("base")
   private I32OpenApi base = null;
 
-  @JsonProperty("unused5")
-  @Valid
-  private List<Boolean> unused5 = null;
-
   @JsonProperty("unused1")
   private Integer unused1 = null;
 
@@ -38,6 +34,10 @@ public class BaseAndExponentOpenApi   {
 
   @JsonProperty("unused3")
   private Float unused3 = null;
+
+  @JsonProperty("unused5")
+  @Valid
+  private List<Boolean> unused5 = null;
 
   public BaseAndExponentOpenApi exponent(I32OpenApi exponent) {
     this.exponent = exponent;
@@ -77,33 +77,6 @@ public class BaseAndExponentOpenApi   {
 
   public void setBase(I32OpenApi base) {
     this.base = base;
-  }
-
-  public BaseAndExponentOpenApi unused5(List<Boolean> unused5) {
-    this.unused5 = unused5;
-    return this;
-  }
-
-  public BaseAndExponentOpenApi addUnused5Item(Boolean unused5Item) {
-    if (this.unused5 == null) {
-      this.unused5 = new ArrayList<Boolean>();
-    }
-    this.unused5.add(unused5Item);
-    return this;
-  }
-
-  /**
-   * Get unused5
-   * @return unused5
-   **/
-  @ApiModelProperty(value = "")
-  
-    public List<Boolean> getUnused5() {
-    return unused5;
-  }
-
-  public void setUnused5(List<Boolean> unused5) {
-    this.unused5 = unused5;
   }
 
   public BaseAndExponentOpenApi unused1(Integer unused1) {
@@ -163,6 +136,33 @@ public class BaseAndExponentOpenApi   {
     this.unused3 = unused3;
   }
 
+  public BaseAndExponentOpenApi unused5(List<Boolean> unused5) {
+    this.unused5 = unused5;
+    return this;
+  }
+
+  public BaseAndExponentOpenApi addUnused5Item(Boolean unused5Item) {
+    if (this.unused5 == null) {
+      this.unused5 = new ArrayList<Boolean>();
+    }
+    this.unused5.add(unused5Item);
+    return this;
+  }
+
+  /**
+   * Get unused5
+   * @return unused5
+   **/
+  @ApiModelProperty(value = "")
+  
+    public List<Boolean> getUnused5() {
+    return unused5;
+  }
+
+  public void setUnused5(List<Boolean> unused5) {
+    this.unused5 = unused5;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -175,15 +175,15 @@ public class BaseAndExponentOpenApi   {
     BaseAndExponentOpenApi baseAndExponent = (BaseAndExponentOpenApi) o;
     return Objects.equals(this.exponent, baseAndExponent.exponent) &&
         Objects.equals(this.base, baseAndExponent.base) &&
-        Objects.equals(this.unused5, baseAndExponent.unused5) &&
         Objects.equals(this.unused1, baseAndExponent.unused1) &&
         Objects.equals(this.unused2, baseAndExponent.unused2) &&
-        Objects.equals(this.unused3, baseAndExponent.unused3);
+        Objects.equals(this.unused3, baseAndExponent.unused3) &&
+        Objects.equals(this.unused5, baseAndExponent.unused5);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exponent, base, unused5, unused1, unused2, unused3);
+    return Objects.hash(exponent, base, unused1, unused2, unused3, unused5);
   }
 
   @Override
@@ -193,10 +193,10 @@ public class BaseAndExponentOpenApi   {
     
     sb.append("    exponent: ").append(toIndentedString(exponent)).append("\n");
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
-    sb.append("    unused5: ").append(toIndentedString(unused5)).append("\n");
     sb.append("    unused1: ").append(toIndentedString(unused1)).append("\n");
     sb.append("    unused2: ").append(toIndentedString(unused2)).append("\n");
     sb.append("    unused3: ").append(toIndentedString(unused3)).append("\n");
+    sb.append("    unused5: ").append(toIndentedString(unused5)).append("\n");
     sb.append("}");
     return sb.toString();
   }
