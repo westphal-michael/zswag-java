@@ -13,7 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import example.calculator.BaseAndExponent;
 import example.calculator.Double;
 import example.calculator.I32;
-import zserio.runtime.array.BoolArray;
 
 @ActiveProfiles("test")
 @ContextConfiguration(classes = ZserioCalculatorServerApplication.class)
@@ -59,7 +58,7 @@ public class ZserioCalculatorServerTests {
 
     @Test
     public void testPostPowerCorrectValues() {
-        BaseAndExponent request = new BaseAndExponent(new I32(5), new I32(2), 0, "", 0, new BoolArray(0));
+        BaseAndExponent request = new BaseAndExponent(new I32(5), new I32(2), 0, "", 0, new boolean[0]);
         Double value = new Double(25.0);
         ResponseEntity<Double> response = client.power(request);
         assert (response.getStatusCode().equals(HttpStatus.OK));
@@ -68,7 +67,7 @@ public class ZserioCalculatorServerTests {
 
     @Test
     public void testPostPowerIncorrectValues() {
-        BaseAndExponent request = new BaseAndExponent(new I32(5), new I32(2), 0, "", 0, new BoolArray(0));
+        BaseAndExponent request = new BaseAndExponent(new I32(5), new I32(2), 0, "", 0, new boolean[0]);
         Double value = new Double(1.0);
         ResponseEntity<Double> response = client.power(request);
         assert (response.getStatusCode().equals(HttpStatus.OK));

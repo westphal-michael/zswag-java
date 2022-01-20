@@ -10,7 +10,6 @@ import example.calculator.BaseAndExponent;
 import example.calculator.Double;
 import example.calculator.I32;
 import lombok.extern.slf4j.Slf4j;
-import zserio.runtime.array.BoolArray;
 
 @RestController
 @Slf4j
@@ -23,7 +22,7 @@ public class ZserioCalculatorClientController {
     }
 
     public Double power(I32 base, I32 exponent) {
-        BaseAndExponent baseAndExponent = new BaseAndExponent(base, exponent, 0, "", 0, new BoolArray(0));
+        BaseAndExponent baseAndExponent = new BaseAndExponent(base, exponent, 0, "", 0, new boolean[0]);
         return client.power(baseAndExponent).getBody();
     }
 

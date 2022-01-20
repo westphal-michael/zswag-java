@@ -13,7 +13,6 @@ import org.springframework.util.StreamUtils;
 import example.calculator.BaseAndExponent;
 import example.calculator.I32;
 import lombok.extern.slf4j.Slf4j;
-import zserio.runtime.array.BoolArray;
 import zserio.runtime.io.InitializeOffsetsWriter;
 import zserio.runtime.io.ZserioIO;
 import zswag.java.rest.openapi.model.BaseAndExponentOpenApi;
@@ -92,7 +91,7 @@ public class SpringOpenApiHttpMessageConverter extends AbstractHttpMessageConver
                         ((BaseAndExponentOpenApi) object).getBase().getValue());
                 example.calculator.I32 exponent = new example.calculator.I32(
                         ((BaseAndExponentOpenApi) object).getExponent().getValue());
-                value = new BaseAndExponent(base, exponent, 0, "", 0, new BoolArray(0));
+                value = new BaseAndExponent(base, exponent, 0, "", 0, new boolean[0]);
                 break;
             case "DoubleOpenApi":
                 value = new example.calculator.Double(((DoubleOpenApi) object).getValue().doubleValue());

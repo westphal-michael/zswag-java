@@ -22,11 +22,6 @@ import example.calculator.Strings;
 import lombok.extern.slf4j.Slf4j;
 import nonapi.io.github.classgraph.json.JSONSerializer;
 import zserio.runtime.ZserioError;
-import zserio.runtime.array.BoolArray;
-import zserio.runtime.array.Float64Array;
-import zserio.runtime.array.IntArray;
-import zserio.runtime.array.StringArray;
-import zserio.runtime.array.UnsignedByteArray;
 import zswag.java.rest.api.ZserioCalculatorServiceInterface;
 
 @RestController
@@ -195,11 +190,11 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
         if (request == null) {
             return null;
         }
-        BoolArray array = new BoolArray(request.size());
+        boolean[] array = new boolean[request.size()];
         int index = 0;
         for (Iterator<Boolean> iterator = request.iterator(); iterator.hasNext();) {
             Boolean value = (Boolean) iterator.next();
-            array.setElementAt(value.booleanValue(), index++);
+            array[index++] = value.booleanValue();
         }
         ResponseEntity<Bool> response = bitMul(new Bools(array));
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";
@@ -211,11 +206,11 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
         if (request == null) {
             return null;
         }
-        UnsignedByteArray array = new UnsignedByteArray(request.size());
+        short[] array = new short[request.size()];
         int index = 0;
         for (Iterator<Byte> iterator = request.iterator(); iterator.hasNext();) {
             Byte value = (Byte) iterator.next();
-            array.setElementAt(value.byteValue(), index++);
+            array[index++] = value.byteValue();
         }
         ResponseEntity<example.calculator.Double> response = byteSum(new Bytes(array));
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";
@@ -227,11 +222,11 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
         if (request == null) {
             return null;
         }
-        StringArray array = new StringArray(request.size());
+        String[] array = new String[request.size()];
         int index = 0;
         for (Iterator<String> iterator = request.iterator(); iterator.hasNext();) {
             String value = (String) iterator.next();
-            array.setElementAt(value, index++);
+            array[index++] = value;
         }
         ResponseEntity<example.calculator.String> response = concat(new Strings(array));
         String value = (response.getBody() != null) ? response.getBody().getValue() : "";
@@ -243,11 +238,11 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
         if (request == null) {
             return null;
         }
-        Float64Array array = new Float64Array(request.size());
+        double[] array = new double[request.size()];
         int index = 0;
         for (Iterator<java.lang.Double> iterator = request.iterator(); iterator.hasNext();) {
             java.lang.Double value = (java.lang.Double) iterator.next();
-            array.setElementAt(value.doubleValue(), index++);
+            array[index++] = value.doubleValue();
         }
         ResponseEntity<example.calculator.Double> response = floatMul(new Doubles(array));
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";
@@ -259,11 +254,11 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
         if (request == null) {
             return null;
         }
-        IntArray array = new IntArray(request.size());
+        int[] array = new int[request.size()];
         int index = 0;
         for (Iterator<Integer> iterator = request.iterator(); iterator.hasNext();) {
             Integer value = (Integer) iterator.next();
-            array.setElementAt(value.intValue(), index++);
+            array[index++] = value.intValue();
         }
         ResponseEntity<example.calculator.Double> response = intMul(new Integers(array));
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";
@@ -275,11 +270,11 @@ public class ZserioCalculatorServerController implements ZserioCalculatorService
         if (request == null) {
             return null;
         }
-        IntArray array = new IntArray(request.size());
+        int[] array = new int[request.size()];
         int index = 0;
         for (Iterator<Integer> iterator = request.iterator(); iterator.hasNext();) {
             Integer value = (Integer) iterator.next();
-            array.setElementAt(value.intValue(), index++);
+            array[index++] = value.intValue();
         }
         ResponseEntity<example.calculator.Double> response = intSum(new Integers(array));
         String value = (response.getBody() != null) ? "" + response.getBody().getValue() : "";

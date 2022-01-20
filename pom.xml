@@ -1,231 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.2</version>
-		<relativePath /> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>zswag.java</groupId>
-	<artifactId>parent</artifactId>
-	<packaging>pom</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.2</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>zswag.java</groupId>
+    <artifactId>parent</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.2-SNAPSHOT</version>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>11</java.version>
-		<zswag.version>${project.version}</zswag.version>
-		<!-- lib versions -->
-		<graalvm.tools.version>0.9.0</graalvm.tools.version>
-		<jackson-datatype-threetenbp.version>2.6.4</jackson-datatype-threetenbp.version>
-		<spring-cloud.version>2020.0.3</spring-cloud.version>
-		<spring-cloud-security.version>2.2.5.RELEASE</spring-cloud-security.version>
-		<spring-native.version>0.10.1</spring-native.version>
-		<spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
-		<springdoc.version>1.5.9</springdoc.version>
-		<springdoc-maven-plugin.version>1.3</springdoc-maven-plugin.version>
-		<swagger-codegen-maven-plugin>3.0.27</swagger-codegen-maven-plugin>
-		<swagger-core-version>1.6.2</swagger-core-version>
-		<swagger-core-v3-version>2.1.10</swagger-core-v3-version>
-		<wiremock.version>2.27.2</wiremock.version>
-		<zserio.version>2.3.0</zserio.version>
-	</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>17</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <zswag.version>${project.version}</zswag.version>
+        <!-- lib versions -->
+        <graalvm.tools.version>0.9.9</graalvm.tools.version>
+        <jackson-datatype-threetenbp.version>2.6.4</jackson-datatype-threetenbp.version>
+        <javax.servlet.version>2.5</javax.servlet.version>
+        <spring-cloud.version>2021.0.0</spring-cloud.version>
+        <spring-cloud-security.version>2.2.5.RELEASE</spring-cloud-security.version>
+        <spring-native.version>0.10.1</spring-native.version>
+        <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
+        <springdoc.version>1.6.3</springdoc.version>
+        <springdoc-maven-plugin.version>1.3</springdoc-maven-plugin.version>
+        <swagger-codegen-maven-plugin>3.0.31</swagger-codegen-maven-plugin>
+        <swagger-core-version>1.6.4</swagger-core-version>
+        <swagger-core-v3-version>2.1.12</swagger-core-v3-version>
+        <wiremock.version>2.27.2</wiremock.version>
+        <zserio.version>2.4.2</zserio.version>
+    </properties>
 
-	<modules>
-		<module>service</module>
-		<module>server</module>
-		<module>client</module>
-		<module>openapi-client</module>
-	</modules>
+    <modules>
+        <module>service</module>
+        <module>server</module>
+        <module>client</module>
+        <module>openapi-client</module>
+    </modules>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.github.joschi.jackson</groupId>
-				<artifactId>jackson-datatype-threetenbp</artifactId>
-				<version>${jackson-datatype-threetenbp.version}</version>
-			</dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.joschi.jackson</groupId>
+                <artifactId>jackson-datatype-threetenbp</artifactId>
+                <version>${jackson-datatype-threetenbp.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>com.github.tomakehurst</groupId>
-				<artifactId>wiremock</artifactId>
-				<version>${wiremock.version}</version>
-				<scope>test</scope>
-			</dependency>
+            <dependency>
+                <groupId>com.github.tomakehurst</groupId>
+                <artifactId>wiremock</artifactId>
+                <version>${wiremock.version}</version>
+                <scope>test</scope>
+            </dependency>
 
-			<dependency>
-				<groupId>io.swagger</groupId>
-				<artifactId>swagger-annotations</artifactId>
-				<version>${swagger-core-version}</version>
-			</dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-core-version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>io.swagger.core.v3</groupId>
-				<artifactId>swagger-annotations</artifactId>
-				<version>${swagger-core-v3-version}</version>
-			</dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-core-v3-version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>org.graalvm.buildtools</groupId>
-				<artifactId>junit-platform-native</artifactId>
-				<version>${graalvm.tools.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${javax.servlet.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-webflux-ui</artifactId>
-				<version>${springdoc.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>org.graalvm.buildtools</groupId>
+                <artifactId>junit-platform-native</artifactId>
+                <version>${graalvm.tools.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webflux-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-security</artifactId>
-				<version>${spring-cloud-security.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-			<dependency>
-				<groupId>org.springframework.experimental</groupId>
-				<artifactId>spring-native</artifactId>
-				<version>${spring-native.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.experimental</groupId>
-				<artifactId>spring-native-configuration</artifactId>
-				<version>${spring-native.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-security</artifactId>
+                <version>${spring-cloud-security.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>org.springframework.security.oauth</groupId>
-				<artifactId>spring-security-oauth2</artifactId>
-				<version>${spring-security-oauth2.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>org.springframework.experimental</groupId>
+                <artifactId>spring-native</artifactId>
+                <version>${spring-native.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.experimental</groupId>
+                <artifactId>spring-native-configuration</artifactId>
+                <version>${spring-native.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>zserio</groupId>
-				<artifactId>zserio</artifactId>
-				<version>${zserio.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${spring-security-oauth2.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>zserio</groupId>
-				<artifactId>zserio_runtime</artifactId>
-				<version>${zserio.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>zserio</groupId>
+                <artifactId>zserio</artifactId>
+                <version>${zserio.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>zswag.java</groupId>
-				<artifactId>client</artifactId>
-				<version>${zswag.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>zswag.java</groupId>
-				<artifactId>server</artifactId>
-				<version>${zswag.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>zswag.java</groupId>
-				<artifactId>service</artifactId>
-				<version>${zswag.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+            <dependency>
+                <groupId>zserio</groupId>
+                <artifactId>zserio_runtime</artifactId>
+                <version>${zserio.version}</version>
+            </dependency>
 
-	<repositories>
-		<repository>
+            <dependency>
+                <groupId>zswag.java</groupId>
+                <artifactId>client</artifactId>
+                <version>${zswag.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>zswag.java</groupId>
+                <artifactId>server</artifactId>
+                <version>${zswag.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>zswag.java</groupId>
+                <artifactId>service</artifactId>
+                <version>${zswag.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
             <id>local-maven-repository</id>
             <url>file:///${project.basedir}/../lib/maven-repository</url>
         </repository>
         <repository>
-			<id>spring-releasee</id>
-			<name>Spring Releases</name>
-			<url>https://repo.spring.io/release</url>
-		</repository>
-		<repository>
-			<id>central</id>
-			<name>Maven Central Repository</name>
-			<url>https://repo1.maven.org/maven2</url>
-		</repository>
-	</repositories>
+            <id>spring-releasee</id>
+            <name>Spring Releases</name>
+            <url>https://repo.spring.io/release</url>
+        </repository>
+        <repository>
+            <id>central</id>
+            <name>Maven Central Repository</name>
+            <url>https://repo1.maven.org/maven2</url>
+        </repository>
+    </repositories>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-releases</id>
-			<name>Spring Releases</name>
-			<url>https://repo.spring.io/release</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>central</id>
-			<name>Maven Plugin Repository</name>
-			<url>https://repo1.maven.org/maven2</url>
-		</pluginRepository>
-	</pluginRepositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-releases</id>
+            <name>Spring Releases</name>
+            <url>https://repo.spring.io/release</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>central</id>
+            <name>Maven Plugin Repository</name>
+            <url>https://repo1.maven.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											io.swagger.codegen.v3
-										</groupId>
-										<artifactId>
-											swagger-codegen-maven-plugin
-										</artifactId>
-										<versionRange>
-											[${swagger-codegen-maven-plugin},)
-										</versionRange>
-										<goals>
-											<goal>generate</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse 
+                    m2e settings only. It has no influence on the Maven build itself. -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            io.swagger.codegen.v3
+                                        </groupId>
+                                        <artifactId>
+                                            swagger-codegen-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [${swagger-codegen-maven-plugin},)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>generate</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
 
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>exec-maven-plugin</artifactId>
-					<version>3.0.0</version>
-				</plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
 
-				<plugin>
-					<groupId>org.graalvm.buildtools</groupId>
-					<artifactId>native-maven-plugin</artifactId>
-					<version>${graalvm.tools.version}</version>
-				</plugin>
+                <plugin>
+                    <groupId>org.graalvm.buildtools</groupId>
+                    <artifactId>native-maven-plugin</artifactId>
+                    <version>${graalvm.tools.version}</version>
+                </plugin>
 
-				<plugin>
-					<groupId>org.springframework.experimental</groupId>
-					<artifactId>spring-aot-maven-plugin</artifactId>
-					<version>${spring-native.version}</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+                <plugin>
+                    <groupId>org.springframework.experimental</groupId>
+                    <artifactId>spring-aot-maven-plugin</artifactId>
+                    <version>${spring-native.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * BoolOpenApi
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-06-08T12:34:06.016125600+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-01-20T13:28:39.317860+01:00[Europe/Berlin]")
 
 
 public class BoolOpenApi   {

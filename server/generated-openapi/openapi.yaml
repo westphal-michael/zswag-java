@@ -738,6 +738,10 @@ components:
           $ref: '#/components/schemas/I32'
         base:
           $ref: '#/components/schemas/I32'
+        unused5:
+          type: array
+          items:
+            type: boolean
         unused1:
           type: integer
           format: int32
@@ -746,16 +750,6 @@ components:
         unused3:
           type: number
           format: float
-        unused5:
-          $ref: '#/components/schemas/BoolArray'
-    BoolArray:
-      type: object
-      properties:
-        fromList:
-          type: array
-          writeOnly: true
-          items:
-            type: boolean
     I32:
       type: object
       properties:
@@ -782,58 +776,34 @@ components:
       properties:
         value:
           type: string
-    IntArray:
-      type: object
-      properties:
-        fromList:
-          type: array
-          writeOnly: true
-          items:
-            type: integer
-            format: int32
     Integers:
       type: object
       properties:
         values:
-          $ref: '#/components/schemas/IntArray'
+          type: array
+          items:
+            type: integer
+            format: int32
     Doubles:
       type: object
       properties:
         values:
-          $ref: '#/components/schemas/Float64Array'
-    Float64Array:
-      type: object
-      properties:
-        fromList:
           type: array
-          writeOnly: true
           items:
             type: number
             format: double
-    StringArray:
-      type: object
-      properties:
-        fromList:
-          type: array
-          writeOnly: true
-          items:
-            type: string
     Strings:
       type: object
       properties:
         values:
-          $ref: '#/components/schemas/StringArray'
+          type: array
+          items:
+            type: string
     Bytes:
       type: object
       properties:
         values:
-          $ref: '#/components/schemas/UnsignedByteArray'
-    UnsignedByteArray:
-      type: object
-      properties:
-        fromList:
           type: array
-          writeOnly: true
           items:
             type: integer
             format: int32
@@ -841,7 +811,9 @@ components:
       type: object
       properties:
         values:
-          $ref: '#/components/schemas/BoolArray'
+          type: array
+          items:
+            type: boolean
     Bool:
       type: object
       properties:
