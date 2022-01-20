@@ -3,7 +3,7 @@ Access & serve zserio services via REST/OpenAPI using **Java** with Spring Boot 
 <br><br>
 
 ## Prerequisites
-   1. JDK 11+
+   1. JDK 17+
    2. Maven 3.6
 <br><br>
 
