@@ -12,6 +12,7 @@ public class FeignZserioDecoder extends ResponseEntityDecoder {
     static final private ObjectFactory<HttpMessageConverters> objectFactory = () -> new HttpMessageConverters(
             SpringZserioConverterRegistrar.getAdditionalMessageConverters());
 
+    @SuppressWarnings("deprecation")
     public FeignZserioDecoder() {
         super(new SpringDecoder(objectFactory));
     }

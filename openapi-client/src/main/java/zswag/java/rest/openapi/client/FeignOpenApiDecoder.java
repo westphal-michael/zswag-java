@@ -22,6 +22,7 @@ public class FeignOpenApiDecoder extends ResponseEntityDecoder {
         return objectFactory;
     }
 
+    @SuppressWarnings("deprecation")
     public FeignOpenApiDecoder() {
         super(new SpringDecoder(objectFactory));
     }

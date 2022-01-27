@@ -1,149 +1,132 @@
 package zswag.java.rest.server;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import example.calculator.BaseAndExponent;
 import example.calculator.Bool;
 import example.calculator.Bools;
 import example.calculator.Bytes;
 import example.calculator.Calculator.CalculatorService;
-import example.calculator.Double;
 import example.calculator.Doubles;
 import example.calculator.EnumWrapper;
 import example.calculator.Integers;
-import example.calculator.String;
 import example.calculator.Strings;
 import lombok.extern.slf4j.Slf4j;
-import zserio.runtime.array.UnsignedByteArray;
 
 @Slf4j
 public class ZserioCalculatorServiceImpl extends CalculatorService {
+
     @Override
     protected Bool bitMulImpl(Bools request, Object context) {
         Bool returnValue = null;
         if (request != null) {
-            zserio.runtime.array.BoolArray values = request.getValues();
+            boolean[] values = request.getValues();
             boolean product = true;
             for (Boolean value : values) {
                 product &= value;
             }
             returnValue = new Bool(product);
         }
-        List<java.lang.String> values = new ArrayList<>();
-        request.getValues().iterator().forEachRemaining(value -> values.add(java.lang.String.valueOf(value)));
-        log.info("bitMul({}) = {}", values, returnValue.getValue());
+        log.info("bitMul({}) = {}", request.getValues(), returnValue.getValue());
         return returnValue;
     }
 
     @Override
-    protected Double byteSumImpl(Bytes request, Object context) {
-        Double returnValue = null;
+    protected example.calculator.Double byteSumImpl(Bytes request, Object context) {
+        example.calculator.Double returnValue = null;
         if (request != null) {
-            UnsignedByteArray values = request.getValues();
+            short[] values = request.getValues();
             double sum = 0;
             for (Short value : values) {
                 sum += value;
             }
-            returnValue = new Double(sum);
+            returnValue = new example.calculator.Double(sum);
         }
-        List<java.lang.String> values = new ArrayList<>();
-        request.getValues().iterator().forEachRemaining(value -> values.add(java.lang.String.valueOf(value)));
-        log.info("byteSum({}) = {}", values, returnValue.getValue());
+        log.info("byteSum({}) = {}", request.getValues(), returnValue.getValue());
         return returnValue;
     }
 
     @Override
-    protected String concatImpl(Strings request, Object context) {
-        String returnValue = null;
+    protected example.calculator.String concatImpl(Strings request, Object context) {
+        example.calculator.String returnValue = null;
         if (request != null) {
-            zserio.runtime.array.StringArray values = request.getValues();
+            String[] values = request.getValues();
             java.lang.String temp = "";
             for (java.lang.String value : values) {
                 temp += value;
             }
 
-            returnValue = new String(temp);
+            returnValue = new example.calculator.String(temp);
         }
-        List<java.lang.String> values = new ArrayList<>();
-        request.getValues().iterator().forEachRemaining(value -> values.add(java.lang.String.valueOf(value)));
-        log.info("concat({}) = {}", values, returnValue.getValue());
+        log.info("concat({}) = {}", request.getValues(), returnValue.getValue());
         return returnValue;
     }
 
     @Override
-    protected Double floatMulImpl(Doubles request, Object context) {
-        Double returnValue = null;
+    protected example.calculator.Double floatMulImpl(Doubles request, Object context) {
+        example.calculator.Double returnValue = null;
         if (request != null) {
-            zserio.runtime.array.Float64Array values = request.getValues();
+            double[] values = request.getValues();
             double product = 1;
-            for (java.lang.Double value : values) {
+            for (Double value : values) {
                 product *= (double) value;
             }
-            returnValue = new Double(product);
+            returnValue = new example.calculator.Double(product);
         }
-        List<java.lang.String> values = new ArrayList<>();
-        request.getValues().iterator().forEachRemaining(value -> values.add(java.lang.String.valueOf(value)));
-        log.info("floatMul({}) = {}", values, returnValue.getValue());
+        log.info("floatMul({}) = {}", request.getValues(), returnValue.getValue());
         return returnValue;
     }
 
     @Override
-    protected Double identityImpl(Double request, Object context) {
+    protected example.calculator.Double identityImpl(example.calculator.Double request, Object context) {
         log.info("identify({}) = {}", request.getValue(), request.getValue());
         return request;
     }
 
     @Override
-    protected Double intMulImpl(Integers request, Object context) {
-        Double returnValue = null;
+    protected example.calculator.Double intMulImpl(Integers request, Object context) {
+        example.calculator.Double returnValue = null;
         if (request != null) {
-            zserio.runtime.array.IntArray values = request.getValues();
+            int[] values = request.getValues();
             double product = 1;
             for (Integer value : values) {
                 product *= (double) value;
             }
-            returnValue = new Double(product);
+            returnValue = new example.calculator.Double(product);
         }
-        List<java.lang.String> values = new ArrayList<>();
-        request.getValues().iterator().forEachRemaining(value -> values.add(java.lang.String.valueOf(value)));
-        log.info("intMul({}) = {}", values, returnValue.getValue());
+        log.info("intMul({}) = {}", request.getValues(), returnValue.getValue());
         return returnValue;
     }
 
     @Override
-    protected Double intSumImpl(Integers request, Object context) {
-        Double returnValue = null;
+    protected example.calculator.Double intSumImpl(Integers request, Object context) {
+        example.calculator.Double returnValue = null;
         if (request != null) {
-            zserio.runtime.array.IntArray values = request.getValues();
+            int[] values = request.getValues();
             double sum = 0;
             for (Integer value : values) {
                 sum += value;
             }
-            returnValue = new Double(sum);
+            returnValue = new example.calculator.Double(sum);
         }
-        List<java.lang.String> values = new ArrayList<>();
-        request.getValues().iterator().forEachRemaining(value -> values.add(java.lang.String.valueOf(value)));
-        log.info("intSum({}) = {}", values, returnValue.getValue());
+        log.info("intSum({}) = {}", request.getValues(), returnValue.getValue());
         return returnValue;
     }
 
     @Override
-    protected String nameImpl(EnumWrapper request, Object context) {
-        String returnValue = null;
+    protected example.calculator.String nameImpl(EnumWrapper request, Object context) {
+        example.calculator.String returnValue = null;
         if (request != null) {
-            returnValue = new String(request.getValue().name());
+            returnValue = new example.calculator.String(request.getValue().name());
         }
         log.info("name({}) = {}", request.getValue().getValue(), returnValue.getValue());
         return returnValue;
     }
 
     @Override
-    protected Double powerImpl(BaseAndExponent request, Object context) {
-        Double returnValue = null;
+    protected example.calculator.Double powerImpl(BaseAndExponent request, Object context) {
+        example.calculator.Double returnValue = null;
         if (request != null) {
             double value = Math.pow(request.getBase().getValue(), request.getExponent().getValue());
-            returnValue = new Double(value);
+            returnValue = new example.calculator.Double(value);
         }
         log.info("power({},{}) = {}", request.getBase().getValue(), request.getExponent().getValue(),
                 returnValue.getValue());

@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import zswag.java.rest.openapi.model.Float64ArrayOpenApi;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -14,15 +15,24 @@ import javax.validation.constraints.*;
  * DoublesOpenApi
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-06-08T12:34:06.016125600+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-01-20T14:32:47.992207+01:00[Europe/Berlin]")
 
 
 public class DoublesOpenApi   {
   @JsonProperty("values")
-  private Float64ArrayOpenApi values = null;
+  @Valid
+  private List<Double> values = null;
 
-  public DoublesOpenApi values(Float64ArrayOpenApi values) {
+  public DoublesOpenApi values(List<Double> values) {
     this.values = values;
+    return this;
+  }
+
+  public DoublesOpenApi addValuesItem(Double valuesItem) {
+    if (this.values == null) {
+      this.values = new ArrayList<Double>();
+    }
+    this.values.add(valuesItem);
     return this;
   }
 
@@ -32,12 +42,11 @@ public class DoublesOpenApi   {
    **/
   @ApiModelProperty(value = "")
   
-    @Valid
-    public Float64ArrayOpenApi getValues() {
+    public List<Double> getValues() {
     return values;
   }
 
-  public void setValues(Float64ArrayOpenApi values) {
+  public void setValues(List<Double> values) {
     this.values = values;
   }
 

@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import zswag.java.rest.openapi.model.IntArrayOpenApi;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -14,15 +15,24 @@ import javax.validation.constraints.*;
  * IntegersOpenApi
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-06-08T12:34:06.016125600+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-01-20T14:32:47.992207+01:00[Europe/Berlin]")
 
 
 public class IntegersOpenApi   {
   @JsonProperty("values")
-  private IntArrayOpenApi values = null;
+  @Valid
+  private List<Integer> values = null;
 
-  public IntegersOpenApi values(IntArrayOpenApi values) {
+  public IntegersOpenApi values(List<Integer> values) {
     this.values = values;
+    return this;
+  }
+
+  public IntegersOpenApi addValuesItem(Integer valuesItem) {
+    if (this.values == null) {
+      this.values = new ArrayList<Integer>();
+    }
+    this.values.add(valuesItem);
     return this;
   }
 
@@ -32,12 +42,11 @@ public class IntegersOpenApi   {
    **/
   @ApiModelProperty(value = "")
   
-    @Valid
-    public IntArrayOpenApi getValues() {
+    public List<Integer> getValues() {
     return values;
   }
 
-  public void setValues(IntArrayOpenApi values) {
+  public void setValues(List<Integer> values) {
     this.values = values;
   }
 
