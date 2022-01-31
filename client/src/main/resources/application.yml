@@ -10,6 +10,8 @@ feign:
     url: localhost:5000
 
 logging:
+    file:
+        name: ./logs/${spring.application.name}.log
     level:
         root: WARN
         zswag: INFO
