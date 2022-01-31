@@ -92,6 +92,7 @@ services:
     volumes:
       - /tmp:/tmp
       - /mnt:/mnt:ro
+      - ./log-server:/logs
     ports:
       - "5000:5000"
     network_mode: bridge
@@ -125,6 +126,7 @@ Addition to docker compose example above:
       - /tmp:/tmp
       - /mnt:/mnt:ro
       - <local file path for external config file>:/config
+      - ./log-client:/logs
     network_mode: bridge
 ```
 
@@ -146,7 +148,7 @@ Addition to docker compose example above:
 
 ```bash
 ...
-  client:
+  openapi-client:
     image: "zswag.java/openapi-client:0.0.1-SNAPSHOT"
     depends_on:
       - "server"
@@ -156,6 +158,7 @@ Addition to docker compose example above:
       - /tmp:/tmp
       - /mnt:/mnt:ro
       - <local file path for external config file>:/config
+      - ./log-openapi-client:/logs
     network_mode: bridge
 ```
 
